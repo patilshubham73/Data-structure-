@@ -1,0 +1,36 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node
+{
+	int data;
+	struct node *next;
+};
+
+int main()
+{
+	//list with three nodes with created 
+	struct node * head=NULL;
+	struct node *second=NULL;
+	struct node *third=NULL;
+	
+	//allocate memory space
+	head=(struct node *)malloc(sizeof(struct node));
+	second=(struct node *)malloc(sizeof(struct node));
+	third=(struct node *)malloc(sizeof(struct node));
+
+	//link node with adding values
+	head->data=1;
+	head->next=second;
+	
+	//add second values and link 
+	head->data=2;
+	head->next=third;
+	
+	//add third value
+	head->data=3;
+	head->next=NULL;
+	
+	return 0;
+}
