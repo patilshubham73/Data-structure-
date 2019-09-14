@@ -1,0 +1,50 @@
+
+//lets code display linked list
+#include <stdio.h>
+#include <stdlib.h>
+
+//define node with structure
+struct node
+{
+	int data;//data for adding
+	struct node *next;//pointing to next
+
+}*first=NULL;
+//create linked list with function
+void create(int A[],int n)
+{
+	int i;
+	struct node *t,*last;
+
+	first=(struct node *)malloc(sizeof(struct node));
+	first->data=A[0];
+	first->next=NULL;
+	last=first;
+
+	for(i=1;i<n;i++)
+	{
+		t=(struct node *)malloc(sizeof(struct node));
+		t->data=A[i];
+		t->next=NULL;
+		last->next=t;
+	    last=t;
+	}
+
+
+}
+void display(struct node *p)
+{
+	while(p!=NULL)
+	{
+
+		printf("%d ",p->data);
+
+	}
+}
+int main(void)
+{
+	int A[]={5,10,6,4,5,6};
+
+	create(A,5);
+	display(first);
+}
