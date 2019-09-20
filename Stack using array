@@ -1,0 +1,159 @@
+
+/*stack implimentation using static array*/
+#include <stdio.h>
+#include <stdlib.h>
+#define CAPACITY 5//size of stack
+int stack[CAPACITY];
+int top=-1;
+
+void push(int);
+int pop(void);
+int isfull(void);
+int isempty(void);
+void traverse(void);
+void peek(void);
+
+
+void main()
+{
+	int ch,item;
+	while(1)
+	{
+		printf("1.push\n");
+		printf("2.pop\n");
+		printf("3.peek\n");
+		printf("4.traverse\n");
+		printf("5.exit\n");
+
+		printf("Enter your choice");
+		scanf("%d",&ch);
+
+
+		switch(ch)
+		{
+
+		case 1:	printf("Enter element to push");
+				scanf("%d",&item);
+				push(item);
+				break;
+
+		case 2:
+				item=pop();
+				if(item==0)
+				{
+					printf("Stack is underflow");
+				}
+				else
+				{
+					printf("poped items: %d",item);
+
+				}
+				break;
+
+		case 3:
+				peek();
+				break;
+
+		case 4:
+				traverse();
+				break;
+
+		case 5:
+				exit(0);
+				
+				
+		default:printf("Invalid input\n\n");
+
+		}
+	}
+}
+//add element to stack
+void push(int ele)
+{
+	if(isfull())
+	{
+		printf("stack is overflow\n");
+	}
+	else
+	{
+		top++;
+		stack[top]=ele;
+		printf("%d pushed into stack\n",ele);
+	}
+
+}//end push
+int isfull()
+{
+	if(top==CAPACITY-1)
+	{
+		return 1;
+
+	}
+	else
+	{
+		return 0;
+	}
+
+}
+int pop()
+{
+	if(isempty())
+	{
+		return 0;
+	}
+	else
+	{
+		return stack[top--];
+
+
+	}
+
+}
+int isempty()
+{
+	if(top==-1)
+	{
+		return 1;
+
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+void peek()
+{
+	if(isempty())
+	{
+
+		printf("stack is empty\n");
+	}
+	else
+	{
+		printf("peek element is :%d\n",stack[top]);
+
+	}
+
+}
+
+void traverse()
+{
+	if(isempty())
+	{
+			printf("stack is empty\n");
+
+	}
+	else
+	{
+		int i;
+		printf("stack elements are:\n");
+		for(i=0;i<=top;i++)
+		{
+			printf("%d\n",stack[i]);
+
+		}
+
+	}
+
+}
